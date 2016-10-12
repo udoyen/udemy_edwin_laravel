@@ -11,19 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-
-    return view('welcome');
-});
+//Route::get('/', function () {
+//
+//    return view('welcome');
+//});
 
 
 //Route::get('/post/{id}', 'PostsController@index');
 
 //Route::resource('posts', 'PostsController');
 
-Route::get('/contact', 'PostsController@contact');
-
-Route::get('/post/{id}/{name}/{password}', 'PostsController@show_post');
+//Route::get('/contact', 'PostsController@contact');
+//
+//Route::get('/post/{id}/{name}/{password}', 'PostsController@show_post');
 
 //Route::get('/about', function () {
 //    return "Hi about";
@@ -39,3 +39,47 @@ Route::get('/post/{id}/{name}/{password}', 'PostsController@show_post');
 //    return 'This is post number ' . $id;
 //});
 
+
+
+/*
+|--------------------------------------------------------------------------
+| DATABASE Raw SQL Queries
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('/delete', function(){
+
+    $deleted = DB::delete('delete from posts where id = ?', [1]);
+
+    return $deleted;
+
+});
+
+//Route::get('/update', function(){
+//
+//    $updated = DB::update('update posts set title="Update title" where id = ?', [1]);
+//
+//    return $updated;
+//});
+//;
+//Route::get('/read', function(){
+//
+//    $results = DB::select('select * from posts where id = ?', [1]);
+//
+//    return var_dump($results);
+
+    // returns an array of results
+//    foreach($results as $posts){
+//
+//        return $posts->title;
+//
+//    }
+
+//});
+
+//Route::get('/insert', function(){
+//
+//    DB::insert('insert into posts(title, content) values(?, ?)', ['PHP with Laravel', 'Laravel is the best thing that has happened to PHP']);
+//
+//});
