@@ -36,6 +36,15 @@ class User extends Authenticatable
     
     public function roles(){
         
-        return $this->belongsToMany('App\Role');
+        return $this->belongsToMany('App\Role')->withPivot('created_at');
+        
+        // When using a different table name to the conventional laravel names
+        //return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
+    }
+    
+    
+    public function photos(){
+        
+         return $this->morphMany('App\Photo', 'imageable');
     }
 }

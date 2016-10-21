@@ -2,7 +2,10 @@
 
 use App\Post;
 use App\User;
+use App\Photo;
 use App\Role;
+use App\Country;
+use App\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,21 +160,21 @@ Route::get('/insert', function(){
 //
 //});
 
-//Route::get('/basicinsert', function(){
-//    
-//    $post = new Post;
-//    
-//    $post->title = 'new ORM title erere 231 ginger';
-//    
-//    $post->content = "Woah Eloquent is really cool fee ivsdjkz";
-//    
-//    $post->save();
-//    
-//    // updating    
-//    //$post = Post::find(2);
-//    
-//    
-//});
+Route::get('/basicinsert', function(){
+    
+    $post = new Post;
+    
+    $post->title = 'new ORM title 2';
+    
+    $post->content = "Woah Eloquent is really cool fee koko short ivsdjkz";
+    
+    $post->save();
+    
+    // updating    
+    //$post = Post::find(2);
+    
+    
+});
 
 
 //Route::get('/basicinsert', function(){
@@ -286,43 +289,150 @@ Route::get('/insert', function(){
 //    
 //});
 
-
-Route::get('/posts', function(){
-    
-    $user = User::find(1);
-    
-    foreach($user->posts as $posts){
-        
-        echo $posts->title . "<br>";
-    }
-});
-
-// Many To Many Relationship
-Route::get('/roles/{id}', function($id){
-    
-    $role = Role::find($id);
-    
-    foreach($role->users as $name){
-        echo $name->name . "<br>";
-    }
-    
-    
-    
-});
-
-
-Route::get('/user/{id}/role', function($id){
-    
-    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
-    
-    echo $user;
-
-//    $user = User::find($id);
+//
+//Route::get('/posts', function(){
 //    
-//    foreach ($user->roles as $role){
+//    $user = User::find(1);
+//    
+//    foreach($user->posts as $posts){
 //        
-//        return $role->name;
+//        echo $posts->title . "<br>";
 //    }
+//});
+//
+//// Many To Many Relationship
+//Route::get('/roles/{id}/users', function($id){
+//    
+//    $role = Role::find($id);
+//    
+//    foreach($role->users as $name){
+//        echo $name->name . "<br>";
+//    }
+//    
+//    
+//    
+//});
+
+
+//// One To One Relationship
+//Route::get('/role/{id}/user', function($id){
+//    
+//    $role = Role::find($id);
+//
+//    foreach ($role->users as $user){
+//        
+//        $name = $user->pivot->user_id;
+//        
+//        return User::find($name)->name;
+//    }
+//    
+//});
+
+
+//Route::get('/user/{id}/role', function($id){
+//    
+//    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+//    
+//    echo $user;
+//
+////    $user = User::find($id);
+////    
+////    foreach ($user->roles as $role){
+////        
+////        return $role->name;
+////    }
+//    
+//    
+//});
+
+
+//// Accessing the Intermediate Table / Pivot
+//Route::get('/user/pivot', function(){
+//    
+//    $user = User::find(1);
+//    
+//    foreach($user->roles as $role){
+//        echo $role->pivot->created_at;
+//    }
+//    
+//});
+
+
+//Route::get('/user/{id}/country', function($id){
+//    
+//    $country = Country::find($id);
+//    
+//    foreach($country->posts as $post){
+//        
+//        return $post->title;
+//    }
+//    
+//    
+//    
+//    
+//    
+//});
+
+// Polymorphic Relations
+
+//Route::get('user/photos', function(){
+//    
+//    $user = User::find(1);
+//    
+//    foreach ($user->photos as $photo){
+//        
+//        return $photo->path;
+//    }
+//
+//    
+//    
+//});
+
+//Route::get('post/{id}/photos', function($id){
+//    
+//    $post = Post::find($id);
+//    
+//    foreach ($post->photos as $photo){
+//        
+//        echo $photo->path . "<br>";
+//    }
+//
+//    
+//    
+//});
+
+//Route::get('/photo/{id}/post', function($id){
+//    
+//    $photo = Photo::findOrFail($id);
+//    
+//    return $photo->imageable;
+//    
+//});
+
+
+// Polymorphic Many To Many
+
+//Route::get('/post/tag', function(){
+//    
+//    $post = Post::find(1);
+//    
+//    foreach($post->tags as $tags){
+//        
+//        echo $tags->name;
+//    }
+//    
+//});
+
+Route::get('/tag/post', function(){
     
+    $tag = Tag::find(2);
+    
+    foreach($tag->posts as $post){
+        
+        echo $post->title;
+        
+    }
     
 });
+    
+    

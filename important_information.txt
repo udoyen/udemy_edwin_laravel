@@ -1,0 +1,6 @@
+Please note the following:
+    1. Linking tables:
+        - create the tables using artisan
+        - create pivot table using artisan and naming them alphabetically e.g. 
+            -- user to role will created thus: $ php artisan make:migration create_users_roles_table --create=role_user
+    2. 
