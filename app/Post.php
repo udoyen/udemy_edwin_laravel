@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     //
+    public $directory = "/images/";
     
     use SoftDeletes;
     
@@ -16,7 +17,8 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'path'
     ];
     
     
@@ -34,6 +36,28 @@ class Post extends Model
     public function tags(){
         
         return $this->morphToMany('App\Tag', 'taggable');
+    }
+    
+    /**
+     * 
+     * @param type $query
+     * @return type
+     */
+    public static function scopeLatest($query){
+        
+       return $query->orderBy('id', 'asc')->get();
+    }
+    
+    /**
+     * 
+     * @param type $value
+     * @return type
+     */
+    public function getPathAttribute($value){
+        
+        // helps you get the path to the images dynamically
+        // accessor
+        return $this->directory . $value;
     }
 
 

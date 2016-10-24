@@ -18,7 +18,10 @@ class PostsController extends Controller
     public function index()
     {
         //        
-        $posts = Post::all();
+        //$posts = Post::all();
+        //$posts = Post::orderBy('id', 'asc')->get();
+        // query scopes
+        $posts = Post::latest();
         
         return view('posts.index', compact('posts'));
     }
@@ -42,6 +45,39 @@ class PostsController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $input = $request->all();
+        
+        if($file = $request->file('file')){
+            
+            $name = $file->getClientOriginalName();
+            
+            $file->move('images', $name);
+            
+            // column name field
+            $input['path'] = $name;
+        }
+        
+        Post::create($input);
+        
+//        $file = $request->file('file');
+//        
+//        echo "<br>";
+//        
+//        echo $file->getClientOriginalName();
+//        
+//        echo "<br>";
+//        
+//        echo $file->getSize();
+//        
+//        echo "<br>";
+//        
+//        echo $file->getClientOriginalExtension();
+//        
+//        echo "<br>";
+//        
+//        
+//        echo $file->getClientSize();
+        
         //validation rules
 //        $this->validate($request, [
 //            
@@ -51,9 +87,9 @@ class PostsController extends Controller
         
         //return $request->all();
         
-        Post::create($request->all());
-        
-        return redirect('/posts');
+//        Post::create($request->all());
+//        
+//        return redirect('/posts');
         
 //        $input = $request->all();
 //        

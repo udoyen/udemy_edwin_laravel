@@ -6,17 +6,18 @@ use App\Photo;
 use App\Role;
 use App\Country;
 use App\Tag;
+use Carbon\Carbon;
 
 /*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | Application Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
 Route::get('/', function () {
 
@@ -25,13 +26,10 @@ Route::get('/', function () {
 
 
 //Route::get('/post/{id}', 'PostsController@index');
-
 //Route::resource('posts', 'PostsController');
-
 //Route::get('/contact', 'PostsController@contact');
 //
 //Route::get('/post/{id}/{name}/{password}', 'PostsController@show_post');
-
 //Route::get('/about', function () {
 //    return "Hi about";
 //});
@@ -49,11 +47,11 @@ Route::get('/', function () {
 
 
 /*
-|--------------------------------------------------------------------------
-| DATABASE Raw SQL Queries
-|--------------------------------------------------------------------------
-|
-*/
+  |--------------------------------------------------------------------------
+  | DATABASE Raw SQL Queries
+  |--------------------------------------------------------------------------
+  |
+ */
 
 
 
@@ -65,10 +63,6 @@ Route::get('/', function () {
 //    return $deleted;
 //
 //});
-
-
-
-
 //Route::get('/update', function(){
 //
 //    $updated = DB::update('update posts set title="Update title" where id = ?', [1]);
@@ -81,16 +75,13 @@ Route::get('/', function () {
 //    $results = DB::select('select * from posts where id = ?', [1]);
 //
 //    return var_dump($results);
-
-    // returns an array of results
+// returns an array of results
 //    foreach($results as $posts){
 //
 //        return $posts->title;
 //
 //    }
-
 //});
-
 //Route::get('/insert', function(){
 //
 //    DB::insert('insert into posts(title, content) values(?, ?)', ['Laravel is awesome with edwin', 'Laravel is the best thing that has happened to PHP, PERIOD.']);
@@ -99,11 +90,11 @@ Route::get('/', function () {
 
 
 /*
-|--------------------------------------------------------------------------
-| ELOQUENT
-|--------------------------------------------------------------------------
-|
-*/
+  |--------------------------------------------------------------------------
+  | ELOQUENT
+  |--------------------------------------------------------------------------
+  |
+ */
 //
 //Route::get('/read', function(){
 //
@@ -115,7 +106,6 @@ Route::get('/', function () {
 //
 //
 //});
-
 //Route::get('/find', function(){
 //
 //    $posts = Post::find(2);
@@ -130,11 +120,11 @@ Route::get('/', function () {
 //});
 
 /*
-|--------------------------------------------------------------------------
-| ELOQUENT
-|--------------------------------------------------------------------------
-|
-*/
+  |--------------------------------------------------------------------------
+  | ELOQUENT
+  |--------------------------------------------------------------------------
+  |
+ */
 
 //Route::get('/findwhere', function(){
 //
@@ -145,8 +135,6 @@ Route::get('/', function () {
 //
 //
 //});
-
-
 //Route::get('/findmore', function(){
 //
 ////    $posts = Post::findOrFail(1);
@@ -159,7 +147,6 @@ Route::get('/', function () {
 //    return $posts;
 //
 //});
-
 //Route::get('/basicinsert', function(){
 //    
 //    $post = new Post;
@@ -175,8 +162,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
-
 //Route::get('/basicinsert', function(){
 //    
 //    $post = Post::find(2);
@@ -192,7 +177,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 //Route::get('/create', function(){
 //
 //    Post::create([
@@ -203,13 +187,11 @@ Route::get('/', function () {
 //        ]);
 //    
 //});
-
 //Route::get('/update', function(){
 //    
 //    Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'NEW PHP TITLE', 'content' => 'I love my instructor']);
 //    
 //});
-
 //Route::get('/delete', function(){
 //    
 //    $post = Post::find(2);
@@ -217,7 +199,6 @@ Route::get('/', function () {
 //    $post->delete();
 //    
 //});
-
 //Route::get('/delete2', function(){
 //    
 //    Post::destroy([4, 5]);
@@ -228,13 +209,11 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 //Route::get('/softdelete', function(){
 //    
 //    Post::find(12)->delete();
 //    
 //});
-
 //Route::get('/readsoftdelete', function(){
 //    
 ////    $post = Post::find(7);
@@ -250,7 +229,6 @@ Route::get('/', function () {
 ////    return $post;
 //    
 //});
-
 //Route::get('/restore', function(){
 //    
 //    Post::withTrashed()->where('is_admin', 0)->restore();
@@ -259,7 +237,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 //Route::get('/forcedelete', function(){
 //    
 //    Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
@@ -268,11 +245,11 @@ Route::get('/', function () {
 
 
 /*
-|--------------------------------------------------------------------------
-| ELOQUENT Relationships
-|--------------------------------------------------------------------------
-|
-*/
+  |--------------------------------------------------------------------------
+  | ELOQUENT Relationships
+  |--------------------------------------------------------------------------
+  |
+ */
 
 // Has One to one relationship
 //Route::get('user/{id}/post', function($id){
@@ -288,7 +265,6 @@ Route::get('/', function () {
 //    return Post::find($id)->user->name;
 //    
 //});
-
 //
 //Route::get('/posts', function(){
 //    
@@ -312,8 +288,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
-
 //// One To One Relationship
 //Route::get('/role/{id}/user', function($id){
 //    
@@ -327,8 +301,6 @@ Route::get('/', function () {
 //    }
 //    
 //});
-
-
 //Route::get('/user/{id}/role', function($id){
 //    
 //    $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
@@ -344,8 +316,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
-
 //// Accessing the Intermediate Table / Pivot
 //Route::get('/user/pivot', function(){
 //    
@@ -356,8 +326,6 @@ Route::get('/', function () {
 //    }
 //    
 //});
-
-
 //Route::get('/user/{id}/country', function($id){
 //    
 //    $country = Country::find($id);
@@ -372,9 +340,7 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 // Polymorphic Relations
-
 //Route::get('user/photos', function(){
 //    
 //    $user = User::find(1);
@@ -387,7 +353,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 //Route::get('post/{id}/photos', function($id){
 //    
 //    $post = Post::find($id);
@@ -400,7 +365,6 @@ Route::get('/', function () {
 //    
 //    
 //});
-
 //Route::get('/photo/{id}/post', function($id){
 //    
 //    $photo = Photo::findOrFail($id);
@@ -408,10 +372,7 @@ Route::get('/', function () {
 //    return $photo->imageable;
 //    
 //});
-
-
 // Polymorphic Many To Many
-
 //Route::get('/post/tag', function(){
 //    
 //    $post = Post::find(1);
@@ -422,7 +383,6 @@ Route::get('/', function () {
 //    }
 //    
 //});
-
 //Route::get('/tag/post', function(){
 //    
 //    $tag = Tag::find(2);
@@ -434,26 +394,69 @@ Route::get('/', function () {
 //    }
 //    
 //});
-    
+
 
 /*
-|--------------------------------------------------------------------------
-| CRUD Application 
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+  |--------------------------------------------------------------------------
+  | CRUD Application
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the routes for an application.
+  | It's a breeze. Simply tell Laravel the URIs it should respond to
+  | and give it the controller to call when that URI is requested.
+  |
+ */
 
 
 // security feature in laravel making web functions avaliable 
 // in resource routes
 // Had to change name from 'middleware' to 'middlewaregroup' to get error to display
-Route::group(['middlewareGroups'=>'web'], function(){
-    
+Route::group(['middlewareGroups' => 'web'], function() {
+
     Route::resource('/posts', 'PostsController');
+
+
+    Route::get('/dates', function() {
+
+        $date = new DateTime('+1 week');
+
+        echo $date->format('m-d-y');
+
+
+        echo '<br>';
+
+        echo Carbon::now()->addDays(10)->diffForHumans();
+
+        echo '<br>';
+
+        echo Carbon::now()->subMonths(5)->diffForHumans();
+
+        echo '<br>';
+
+
+        echo Carbon::now()->yesterday()->diffForHumans();
+    });
     
+    Route::get('/getname', function(){
+        
+        $user = User::find(1);
+        
+        echo $user->name;
+        
+    });
+    
+     Route::get('/setname', function(){
+        
+        $user = User::find(1);
+        
+        $user->name = "william";
+        
+        $user->save();
+        
+    });
 });
-    
+
+
+
+
+
