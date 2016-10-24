@@ -447,5 +447,13 @@ Route::get('/', function () {
 |
 */
 
-Route::resource('/posts', 'PostsController');
+
+// security feature in laravel making web functions avaliable 
+// in resource routes
+// Had to change name from 'middleware' to 'middlewaregroup' to get error to display
+Route::group(['middlewareGroups'=>'web'], function(){
+    
+    Route::resource('/posts', 'PostsController');
+    
+});
     
