@@ -18,17 +18,17 @@ use App\Tag;
 |
 */
 
-//Route::get('/', function () {
-//
-//    return view('welcome');
-//});
+Route::get('/', function () {
+
+    return view('welcome');
+});
 
 
 //Route::get('/post/{id}', 'PostsController@index');
 
 //Route::resource('posts', 'PostsController');
 
-Route::get('/contact', 'PostsController@contact');
+//Route::get('/contact', 'PostsController@contact');
 //
 //Route::get('/post/{id}/{name}/{password}', 'PostsController@show_post');
 
@@ -91,11 +91,11 @@ Route::get('/contact', 'PostsController@contact');
 
 //});
 
-Route::get('/insert', function(){
-
-    DB::insert('insert into posts(title, content) values(?, ?)', ['Laravel is awesome with edwin', 'Laravel is the best thing that has happened to PHP, PERIOD.']);
-
-});
+//Route::get('/insert', function(){
+//
+//    DB::insert('insert into posts(title, content) values(?, ?)', ['Laravel is awesome with edwin', 'Laravel is the best thing that has happened to PHP, PERIOD.']);
+//
+//});
 
 
 /*
@@ -160,21 +160,21 @@ Route::get('/insert', function(){
 //
 //});
 
-Route::get('/basicinsert', function(){
-    
-    $post = new Post;
-    
-    $post->title = 'new ORM title 2';
-    
-    $post->content = "Woah Eloquent is really cool fee koko short ivsdjkz";
-    
-    $post->save();
-    
-    // updating    
-    //$post = Post::find(2);
-    
-    
-});
+//Route::get('/basicinsert', function(){
+//    
+//    $post = new Post;
+//    
+//    $post->title = 'new ORM title 2';
+//    
+//    $post->content = "Woah Eloquent is really cool fee koko short ivsdjkz";
+//    
+//    $post->save();
+//    
+//    // updating    
+//    //$post = Post::find(2);
+//    
+//    
+//});
 
 
 //Route::get('/basicinsert', function(){
@@ -423,16 +423,29 @@ Route::get('/basicinsert', function(){
 //    
 //});
 
-Route::get('/tag/post', function(){
+//Route::get('/tag/post', function(){
+//    
+//    $tag = Tag::find(2);
+//    
+//    foreach($tag->posts as $post){
+//        
+//        echo $post->title;
+//        
+//    }
+//    
+//});
     
-    $tag = Tag::find(2);
-    
-    foreach($tag->posts as $post){
-        
-        echo $post->title;
-        
-    }
-    
-});
-    
+
+/*
+|--------------------------------------------------------------------------
+| CRUD Application 
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the controller to call when that URI is requested.
+|
+*/
+
+Route::resource('/posts', 'PostsController');
     
